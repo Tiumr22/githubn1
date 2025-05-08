@@ -1,5 +1,9 @@
+import random
+
 with open("character.txt","r") as file:
-    content = file.read()
-    
-characters = content
-print(characters)
+    content = file.read().splitlines()
+with open("output.txt","w") as file:
+    for characters in characters:
+        status = random.choice(["dead","alive"])
+        file.write(characters + "-" + status)
+print("staatused on salvestatud faile output.txt")

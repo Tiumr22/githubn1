@@ -1,9 +1,14 @@
 import random
 
-with open("character.txt","r") as file:
-    content = file.read().splitlines()
-with open("output.txt","w") as file:
-    for characters in characters:
-        status = random.choice(["dead","alive"])
-        file.write(characters + "-" + status)
-print("staatused on salvestatud faile output.txt")
+with open("character.txt", "r") as file:
+    characters = file.read().splitlines()
+
+with open("alive.txt", "w") as alive_file, open("dead.txt", "w") as dead_file:
+    for character in characters:
+        status = random.choice(["dead", "alive"])
+        if status == "alive":
+            alive_file.write(character + "-" + status)
+        else:
+            dead_file.write(character + "-" + status)
+
+print("Statuses have been saved in alive.txt and dead.txt")
